@@ -2,6 +2,7 @@ package user.webstudy;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import user.db.NotFoundException;
+import user.db.PasswordMismatch;
 import user.db.User;
 import user.db.UserDb;
 
@@ -22,17 +25,26 @@ public class Login extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		logger.info("start2");
 		String userId = req.getParameter("userId");
 		String userPw = req.getParameter("userPw");
-		session.setAttribute("userId", userId);
-		session.setAttribute("userPw", userPw);
-		logger.info("Id :" + userId + ", pw :" + userPw);
-		User user = new User();
 		
-		UserDb.addUser(user);
+		try {
+			User.login(userId, userPw);
+			session.setAttribute("userId", userId);
+			resp.sendRedirect("login.jsp");
+		} catch (NotFoundException e) {
+			foward(req, resp, "존재하지 않는 아이디입니다.");
+		} catch (PasswordMismatch e) {
+			foward(req, resp, "비밀번호가 틀렸습니다.");
+		}
+		
+	}
 
-		if (session.getAttribute("userId").equals(userId))
-			resp.sendRedirect("/login.jsp");
+	private void foward(HttpServletRequest req, HttpServletResponse resp,String error)
+			throws ServletException, IOException {
+		req.setAttribute("errormasage", error);
+		RequestDispatcher rd = req.getRequestDispatcher("/loginpage.jsp");
+		rd.forward(req, resp);
+		
 	}
 }
