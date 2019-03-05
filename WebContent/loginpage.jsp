@@ -4,7 +4,6 @@
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <% 
-
 String error = (String)request.getAttribute("errormasage");
 %>
 <html>

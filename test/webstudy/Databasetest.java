@@ -13,11 +13,10 @@ public class Databasetest {
 
 	@Test
 	public void test() {
-		User user = new User("uk","1234","king","king@king.com");		
-		UserDb.addUser(user); 
+		UserDb.addUser(UserTest.TEST_USER); 
 		
-		User dbUser = UserDb.findUser(user.getUserId());
-		assertEquals(user ,dbUser);
+		User dbUser = UserDb.findUser(UserTest.TEST_USER.getUserId());
+		assertEquals(UserTest.TEST_USER ,dbUser);
 	}
 	@Test
 	public void notUser() throws Exception {
