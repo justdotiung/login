@@ -2,6 +2,7 @@ package user.db;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.BooleanSupplier;
 
 public class User {
 	private String userId;
@@ -49,10 +50,40 @@ public class User {
 
 
 
-	public void create(User user) {
-		Map<String, User> map= new HashMap<String, User>();
-		map.put("userId", user);
-		
+	public boolean samePw(String userPW2) {
+	return this.userPW.equals(userPW2);
 	}
+
+
+
+	public Boolean unexedUser(String string) {
+
+		return this.userId.equals(string);
+	}
+
+
+
+	public static boolean login(String userId2, String userPW2) throws NotFoundException, PasswordMismatch {
+		User user = UserDb.findUser(userId2);
+		
+		if(user == null )
+			throw new NotFoundException();
+		if(!user.samePw(userPW2))
+			throw new PasswordMismatch();
+		
+			return true;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 	
 }

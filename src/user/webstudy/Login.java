@@ -29,7 +29,7 @@ public class Login extends HttpServlet {
 		session.setAttribute("userPw", userPw);
 		logger.info("Id :" + userId + ", pw :" + userPw);
 		User user = new User();
-		user.create(user);
+		
 		UserDb.addUser(user);
 
 		if (session.getAttribute("userId").equals(userId))
