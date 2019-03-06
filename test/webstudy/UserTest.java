@@ -23,19 +23,18 @@ static final User TEST_USER = new User("5255","1234","king","king@king.com");
 	
 	@Test
 	public  void login() throws Exception {
-		User user = UserTest.TEST_USER;
 		UserDb.addUser(UserTest.TEST_USER);
-		assertTrue(user.login(TEST_USER.getUserId(),TEST_USER.getUserPW()));
+		assertTrue(User.login(TEST_USER.getUserId(),TEST_USER.getUserPW()));
 	}
 	@Test(expected = NotFoundException.class)
 	public void notExistedUeser() throws Exception {
-		TEST_USER.login("userId",TEST_USER.getUserPW());
+		User.login("userId",TEST_USER.getUserPW());
 		
 	}
 	@Test(expected = PasswordMismatch.class)
 	public void pwNotMatch() throws Exception {
 		UserDb.addUser(UserTest.TEST_USER);
-		TEST_USER.login(TEST_USER.getUserId(),"Pw");
+		User.login(TEST_USER.getUserId(),"Pw");
 	}
 
 

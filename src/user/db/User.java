@@ -1,8 +1,5 @@
 package user.db;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.BooleanSupplier;
 
 public class User {
 	private String userId;
