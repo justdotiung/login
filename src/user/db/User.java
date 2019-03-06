@@ -26,6 +26,30 @@ public class User {
 
 
 
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+
+
+	public void setUserPW(String userPW) {
+		this.userPW = userPW;
+	}
+
+
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+
+
+
 	public String getUserId() {
 		return userId;
 	}

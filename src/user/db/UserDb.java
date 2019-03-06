@@ -13,4 +13,8 @@ public class UserDb {
 	public static User findUser(String userId) {
 		return map.get(userId);
 		}
+
+	public static void modify(User user) {
+		
+	}
 }

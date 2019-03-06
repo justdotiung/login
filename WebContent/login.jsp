@@ -8,6 +8,6 @@
 </head>
 <body>
 환영합니다.
-<a href="Modify">환영합니다.</a>
+<a href="modify.jsp">수정하기.</a>
 </body>
 </html>

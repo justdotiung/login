@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@WebServlet("/Modify")
+@WebServlet("/modify")
 public class Modify extends HttpServlet {
 	final static Logger logger = LoggerFactory.getLogger(Modify.class);
 

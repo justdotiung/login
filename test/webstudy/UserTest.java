@@ -10,7 +10,7 @@ import user.db.User;
 import user.db.UserDb;
 
 public class UserTest {
-static final User TEST_USER = new User("uk","1234","king","king@king.com");		
+static final User TEST_USER = new User("5255","1234","king","king@king.com");		
 
 	@Test
 	public void matchPw() throws Exception {
@@ -24,7 +24,7 @@ static final User TEST_USER = new User("uk","1234","king","king@king.com");
 	@Test
 	public  void login() throws Exception {
 		User user = UserTest.TEST_USER;
-		UserDb.addUser(user);
+		UserDb.addUser(UserTest.TEST_USER);
 		assertTrue(user.login(TEST_USER.getUserId(),TEST_USER.getUserPW()));
 	}
 	@Test(expected = NotFoundException.class)
@@ -34,11 +34,10 @@ static final User TEST_USER = new User("uk","1234","king","king@king.com");
 	}
 	@Test(expected = PasswordMismatch.class)
 	public void pwNotMatch() throws Exception {
-		User user = UserTest.TEST_USER;
-		UserDb.addUser(user);
+		UserDb.addUser(UserTest.TEST_USER);
 		TEST_USER.login(TEST_USER.getUserId(),"Pw");
-
 	}
+
 
 	
 }
