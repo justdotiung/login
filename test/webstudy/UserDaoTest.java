@@ -33,10 +33,13 @@ public class UserDaoTest {
 		dao.delete(UserTest.TEST_USER.getUserId());
 		dao.insert(UserTest.TEST_USER);
 		User user = UserTest.TEST_USER;
-		user.setUserPW("123");
 		logger.debug(user.toString());
 		dao.modify(user);
-		dao.view(UserTest.TEST_USER);
+		
+	}@Test
+	public void testName() throws Exception {
+		User user = dao.view(UserTest.TEST_USER.getUserId());
+		assertEquals(UserTest.TEST_USER, user);
 		
 	}
 }

@@ -31,6 +31,8 @@ public class Login extends HttpServlet {
 		try {
 			User.login(userId, userPw);
 			session.setAttribute("userId", userId);
+			logger.debug("id"+userId+"pw:"+userPw);
+			
 			resp.sendRedirect("login.jsp");
 		} catch (NotFoundException e) {
 			foward(req, resp, "존재하지 않는 아이디입니다.");
