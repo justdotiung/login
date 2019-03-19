@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-환영합니다.
+환영합니다. 로그인입니다.
 <a href="modify">수정하기.</a>
 </body>
 </html>
